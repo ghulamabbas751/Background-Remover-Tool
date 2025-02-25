@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Remove image backgrounds easily with our free online tool. Optimize images for better performance and SEO.">
+  <meta name="keywords" content="background remover, image editor, free image tool, SEO optimized">
+  <meta name="author" content="Your Company Name">
+  <title>Background Remover Tool - Free Online Image Editor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Modern CSS Styling */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: #e0e0e0;
+    }
+
+    main {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .upload-section {
+      margin-bottom: 1.5rem;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .file-upload-label {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #007bff;
+      color: #fff;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .file-upload-label:hover {
+      background: #0056b3;
+    }
+
+    button {
+      padding: 12px 24px;
+      background: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #218838;
+    }
+
+    .result-section {
+      margin-top: 1.5rem;
+    }
+
+    .result-section img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      display: none;
+    }
+
+    .result-section a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 10px 20px;
+      background: #ff4757;
+      color: #fff;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      display: none;
+    }
+
+    .result-section a:hover {
+      background: #ff6b81;
+    }
+
+    .ad-unit {
+      margin: 2rem 0;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #e0e0e0;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    main {
+      animation: fadeIn 0.8s ease-out;
+    }
+  </style>
+  <!-- Google AdSense Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_AD_SENSE_ID" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <h1>Background Remover Tool</h1>
+    <p>Upload an image to remove the background instantly.</p>
+  </header>
+
+  <main>
+    <!-- Ad Unit 1 -->
+    <div class="ad-unit">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-YOUR_AD_SENSE_ID"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <!-- Image Upload Section -->
+    <section class="upload-section">
+      <label for="imageUpload" class="file-upload-label">Choose Image</label>
+      <input type="file" id="imageUpload" accept="image/*">
+      <button id="removeBackgroundBtn">Remove Background</button>
+    </section>
+
+    <!-- Result Section -->
+    <section class="result-section">
+      <img id="resultImage" src="" alt="Background Removed Image">
+      <a id="downloadLink" href="#" download="background-removed.png">Download Image</a>
+    </section>
+
+    <!-- Ad Unit 2 -->
+    <div class="ad-unit">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-YOUR_AD_SENSE_ID"
+           data-ad-slot="0987654321"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Your Company Name. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // JavaScript Functionality
+    document.getElementById('removeBackgroundBtn').addEventListener('click', function () {
+      const fileInput = document.getElementById('imageUpload');
+      const resultImage = document.getElementById('resultImage');
+      const downloadLink = document.getElementById('downloadLink');
+
+      if (fileInput.files.length === 0) {
+        alert('Please upload an image first.');
+        return;
+      }
+
+      const file = fileInput.files[0];
+
+      // Check file size (max 5MB for free accounts)
+      if (file.size > 5 * 1024 * 1024) {
+        alert('File size exceeds 5MB. Please upload a smaller image.');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('image_file', file);
+
+      // Replace with your API key from Remove.bg
+      const apiKey = '4ge92zqgdtwPSWsTb8NsNSWA'; // Replace with your API key
+      const apiUrl = 'https://api.remove.bg/v1.0/removebg';
+
+      // Show loading indicator
+      resultImage.style.display = 'none';
+      downloadLink.style.display = 'none';
+      alert('Processing image... Please wait.');
+
+      fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'X-Api-Key': apiKey,
+        },
+        body: formData,
+      })
+        .then((response) => {
+          if (!response.ok) {
+            return response.text().then((text) => {
+              throw new Error(text || 'Failed to remove background. Please check your API key and try again.');
+            });
+          }
+          return response.blob();
+        })
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          resultImage.src = url;
+          resultImage.style.display = 'block';
+          downloadLink.href = url;
+          downloadLink.style.display = 'block';
+          alert('Background removed successfully!');
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          alert(error.message || 'Failed to remove background. Please try again.');
+        });
+    });
+  </script>
+</body>
+</html>
